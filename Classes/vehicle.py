@@ -31,16 +31,37 @@ class Vehicle(Sprite):
         self.rect.y = self.y
         pass
 
+    #def update(self, settings, start_station_time, end_station_time):
+        # Update logic for movement or other behaviors
+        """Move the vehicle."""
+        #time_difference = (end_station_time - start_station_time).total_seconds()
+        #speed = settings.screen_width / time_difference
+
+        #if self.rect.x < settings.startstop2_x - self.rect.width:
+            #elapsed_time = (pygame.time.get_ticks() - start_station_time) / 1000  # Convert to seconds
+            #distance = speed * elapsed_time
+            #self.rect.x = settings.startstop1_x + distance
+
 
 # Subclasses for Bus and Train inheriting from Vehicle
 class Bus(Vehicle):
     def __init__(self):
-        super().__init__('images/bus1_100.bmp')
+        super().__init__(image='images/bus1_100.bmp')
         # Bus-specific attributes or behaviors can be added here
 
 
 class Tube(Vehicle):
     def __init__(self):
-        super().__init__('images/tube1.bmp')
+        super().__init__(image='images/tube1.bmp')
         # Tube-specific attributes or behaviors can be added here
 
+# Sub-Subclasses
+class Bus300East(Bus):
+    def __init__(self):
+        super().__init__()
+        # Bus300East-specific attributes or behaviors can be added here
+
+class TubeNorthernNorth(Tube):
+    def __init__(self):
+        super().__init__()
+        # TubeNorthernNorth-specific attributes or behaviors can be added here

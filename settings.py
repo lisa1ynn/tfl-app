@@ -18,9 +18,17 @@ class Settings:
         self.station2_x = 1000
         self.station2_y = 500
 
-        # vehicle start and stop position
-        self.startstop1_x = self.station1_x - 50
-        self.startstop1_y = self.station1_y
+        # Bus times
+        #self.bus1_station1_time = 12.00
+        #self.bus1_station2_time = 12.03
 
-        self.startstop2_x = self.station2_x + 50
-        self.startstop2_y = self.station2_y
+        # Tube times
+        #self.tube1_station2_time = datetime(2023, 12, 5, 12, 0)  # Replace with your start time
+        #self.tube1_station1_time = datetime(2023, 12, 5, 12, 3)  # Replace with your end time
+
+        # vehicle start and stop position
+        # self.startstop1_x = self.station1_x - 50
+        # self.startstop1_y = self.station1_y
+
+        # self.startstop2_x = self.station2_x + 50
+        # self.startstop2_y = self.station2_y
