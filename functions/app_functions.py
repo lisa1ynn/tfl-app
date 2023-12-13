@@ -1,6 +1,6 @@
 import sys
 import pygame
-import functions.vehicle_functions as vf
+from functions import vehicle_functions as vf, infrastructure_functions as inf
 
 
 def check_events():
@@ -19,6 +19,7 @@ def update_screen(settings, screen, buses, tubes):
     # Draw all sprites
     buses.draw(screen)
     tubes.draw(screen)
+    inf.create_infratructrure(screen)
 
     pygame.display.flip()
 

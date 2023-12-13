@@ -6,9 +6,9 @@ from settings import Settings
 class Vehicle(Sprite):
     """A class to represent a single vehicle."""
 
-    def __init__(self, image):
+    def __init__(self, image, rotation_angle):
         super().__init__()
-        self.image = pygame.image.load(image)
+        self.image = pygame.transform.rotate(pygame.transform.scale(pygame.image.load(image), (80, 80)), rotation_angle)
         self.rect = self.image.get_rect()
         self.settings = Settings()
 
@@ -46,13 +46,13 @@ class Vehicle(Sprite):
 # Subclasses for Bus and Train inheriting from Vehicle
 class Bus(Vehicle):
     def __init__(self):
-        super().__init__(image='images/bus1_100.bmp')
+        super().__init__(image='images/bus1_100.bmp', rotation_angle=0)
         # Bus-specific attributes or behaviors can be added here
 
 
 class Tube(Vehicle):
     def __init__(self):
-        super().__init__(image='images/tube1.bmp')
+        super().__init__(image='images/tube1.bmp', rotation_angle=180)
         # Tube-specific attributes or behaviors can be added here
 
 # Sub-Subclasses
