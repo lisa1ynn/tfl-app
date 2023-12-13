@@ -54,14 +54,3 @@ class Tube(Vehicle):
     def __init__(self):
         super().__init__(image='images/tube1.bmp', rotation_angle=180)
         # Tube-specific attributes or behaviors can be added here
-
-# Sub-Subclasses
-class Bus300East(Bus):
-    def __init__(self):
-        super().__init__()
-        # Bus300East-specific attributes or behaviors can be added here
-
-class TubeNorthernNorth(Tube):
-    def __init__(self):
-        super().__init__()
-        # TubeNorthernNorth-specific attributes or behaviors can be added here

@@ -19,7 +19,7 @@ def update_screen(settings, screen, buses, tubes):
     # Draw all sprites
     buses.draw(screen)
     tubes.draw(screen)
-    inf.create_infratructrure(screen)
+    inf.create_infratructrure(screen, settings)
 
     pygame.display.flip()
 
