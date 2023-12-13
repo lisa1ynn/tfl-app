@@ -1,18 +1,18 @@
-from classes.vehicle import Bus300East, TubeNorthernNorth
+from classes.vehicle import Bus, Tube
 
 def create_bus(settings, buses):
     """Create a bus and place it in the row."""
-    bus1 = Bus300East()
-    bus1.rect.x = settings.station1_x
-    bus1.rect.y = settings.station1_y
-    buses.add(bus1)
+    bus_300_east = Bus()
+    bus_300_east.rect.x = settings.busstop_other3_x
+    bus_300_east.rect.y = settings.busstop_other3_y
+    buses.add(bus_300_east)
 
 def create_tube(settings, tubes):
     """Create a bus and place it in the row."""
-    tube1 = TubeNorthernNorth()
-    tube1.rect.x = settings.station2_x
-    tube1.rect.y = settings.station2_y
-    tubes.add(tube1)
+    tube_northern_nort = Tube()
+    tube_northern_nort.rect.x = settings.tubestop_holborn_x
+    tube_northern_nort.rect.y = settings.tubestop_holborn_y
+    tubes.add(tube_northern_nort)
 
 def create_vehicles(settings, tubes, buses):
     """Update the positions of all vehicles."""
@@ -26,10 +26,10 @@ def update_vehicles(settings, tubes, buses):
 
     # Get rid of vehicles that have arrived.
     for bus in buses.copy():
-        if bus.rect.right >= settings.station2_x:
+        if bus.rect.right >= settings.busstop_other4_x:
             buses.remove(bus)
 
     # Get rid of vehicles that have arrived.
     for tube in tubes.copy():
-        if tube.rect.left <= settings.station1_x:
+        if tube.rect.left <= settings.tubestop_tottenhamcourtroad_x:
             tubes.remove(tube)

@@ -16,13 +16,18 @@ class TflApp:
         self.buses = pygame.sprite.Group()
         self.tubes = pygame.sprite.Group()
 
-        vf.create_vehicles(self.settings, self.tubes, self.buses)
+        vf.create_vehicles(self.settings,
+                           self.tubes,
+                           self.buses)
 
     def _run_game(self):
         """Start the main loop for the app."""
         while True:
             af.check_events()
-            af.update_screen(self.settings, self.screen, self.buses, self.tubes)
+            af.update_screen(self.settings,
+                             self.screen,
+                             self.buses,
+                             self.tubes)
 
 
 if __name__ == '__main__':

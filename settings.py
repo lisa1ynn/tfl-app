@@ -11,12 +11,31 @@ class Settings:
         # Vehicle settings
         self.vehicle_speed = 0.8
 
-        # Station settings
-        self.station1_x = 300
-        self.station1_y = 500
+        # Tube Station settings
+        self.tubestop_stpauls_x = 690
+        self.tubestop_stpauls_y = 830
+        self.tubestop_holborn_x = 380
+        self.tubestop_holborn_y = 560
+        self.tubestop_tottenhamcourtroad_x = 40
+        self.tubestop_tottenhamcourtroad_y = 540
+        self.tubestop_russlesquare_x = 340
+        self.tubestop_russlesquare_y = 20
+        self.tubestop_coventgarden_x = 340
+        self.tubestop_coventgarden_y = 850
 
-        self.station2_x = 1000
-        self.station2_y = 500
+        # Bus Station settings
+        self.busstop_x_x = 980
+        self.busstop_x_y = 200
+        self.busstop_other1_x = 980
+        self.busstop_other1_y = 50
+        self.busstop_other2_x = 980
+        self.busstop_other2_y = 600
+        self.busstop_y_x = 800
+        self.busstop_y_y = 360
+        self.busstop_other3_x = 500
+        self.busstop_other3_y = 360
+        self.busstop_other4_x = 1300
+        self.busstop_other4_y = 360
 
         # Bus times
         #self.bus1_station1_time = 12.00
