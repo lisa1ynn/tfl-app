@@ -59,7 +59,3 @@ class Connection:
 conn = Connection()
 
 conn.call()
-
-
-
-

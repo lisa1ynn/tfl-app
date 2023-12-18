@@ -7,8 +7,10 @@ def create_infratructrure(screen, settings):
     """Create infrastructure"""
     # Roads
     roads = Roads(screen)
+
     #Hult
     hult = Hult(screen)
+
     # Tube stops
     tubestop_stpauls = TubeStops(screen,
                                  x=settings.tubestop_stpauls_x,
@@ -60,13 +62,11 @@ def create_infratructrure(screen, settings):
     # build
     roads.draw_roads()
     hult.blitme()
-
     tubestop_stpauls.blitme()
     tubestop_holborn.blitme()
     tubestop_tottenhamcourtroad.blitme()
     tubestop_russlesquare.blitme()
     tubestop_coventgarden.blitme()
-
     busstop_x.blitme()
     busstop_other1.blitme()
     busstop_other2.blitme()
