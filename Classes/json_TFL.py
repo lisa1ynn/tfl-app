@@ -22,12 +22,30 @@ class Connection:
 
     
     # Bus Stops:
+    # (If you're confused, blame it on TFL, they literally name two stops differently,
+    # even if they are across the road and service the same line. Sorry.)
+
+    # 55, 243, 19 and 38 (East - West)
 
     # Gray's Inn Road Bus Stop ID (Buses going East-West on lines 55, 243, 19 and 38) = '490007391E'
-    # 
+    # Lines travelling West Stop on Platform CP
+
+    # Red Lion Street Bus Stop ID (Lines travelling West leaving Gray's Inn Road (Platform A)) = '490007834F'
+
+    # Lines travelling East Stop on Platform CA (of Gray's Inn Road)
+
+    # Rosebury Avenue Bus Stop ID (Lines travelling East leaving Gray's Inn Road (Platform CU - Lines 55 & 243; Platform CE - 19 & 38)) = '490011679W'
 
 
-    # Clerkenwell Road / Rosebery Avenue Bus Stop ID (Buses going North-South on lines 17 and 46) = '490015447S'
+
+    # 17 and 46 (North - South)
+
+    # Clerkenwell Road / Rosebery Avenue Bus Stop ID (Buses going South on lines 17 and 46 (Platform CD)) = '490015447S'
+    # High Holborn / Chancery Lane Station Bus Stop ID (Lines travelling South leaving Clerkenwell Road / Rosebery Avenue (Platform C)) = '490008165C'
+
+
+    # Gray's Inn Road Bus Stop ID (Buses going North on lines 17 and 46 (Platform B)) = '490007391E'
+    # Coley Street Bus Stop ID (Lines travelling North leaving Gray's Inn Road (Platform HD)) = '490007598S'
 
 
     # Tube lines:
@@ -36,6 +54,11 @@ class Connection:
 
     # Bus lines:
     
+    # East-West = Gray's Inn Road
+
+    # North = Gray's Inn Road
+    # South = Clerkenwell Road / Rosebery Avenue
+
     # East-West street stop line 1 = '55'
     # East-West street stop line 2 = '243'
     # East-West street stop line 3 = '19'
@@ -81,6 +104,7 @@ class Connection:
 
 
                 print(f"Vehicle ID: {vehicle_id}, Line: {line_name}, Direction: {direction}, Platform: {platform_name}, Current Location: {current_location}, Time to Station: {time_to_station} seconds, Towards: {towards}")
+                return time_to_station
 
     
 
