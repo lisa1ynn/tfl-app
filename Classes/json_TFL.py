@@ -17,6 +17,8 @@ class Connection:
     # Holborn Underground Station ID = '940GZZLUHBN'
     # Chancery Lane Underground Station ID (Central Eastbound Leaving Holborn) = '940GZZLUCHL'
     # Tottenham Court Road Underground Station ID (Central Westbound Leaving Holborn) = 'HUBTCR'
+    # Oxford Circus Underground Station ID (Central Westbound) = '940GZZLUOXC'
+
     # Covent Garden Underground Station ID (Northern Southbound Leaving Holborn) = '940GZZLUCGN'
     # Russell Square Underground Station ID (Northern Northbound Leaving Holborn) = '940GZZLURSQ'
 
