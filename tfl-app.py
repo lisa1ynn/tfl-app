@@ -19,27 +19,25 @@ class TflApp:
         self.bus17_south = pygame.sprite.Group()
         self.bus46_north = pygame.sprite.Group()
         self.bus46_south = pygame.sprite.Group()
-        self.bus19_north = pygame.sprite.Group()
-        self.bus19_south = pygame.sprite.Group()
-        self.bus38_north = pygame.sprite.Group()
-        self.bus38_south = pygame.sprite.Group()
-        self.bus55_north = pygame.sprite.Group()
-        self.bus55_south = pygame.sprite.Group()
-        self.bus243_north = pygame.sprite.Group()
-        self.bus243_south = pygame.sprite.Group()
+        self.bus19_east = pygame.sprite.Group()
+        self.bus19_west = pygame.sprite.Group()
+        self.bus38_east = pygame.sprite.Group()
+        self.bus38_west = pygame.sprite.Group()
+        self.bus55_east = pygame.sprite.Group()
+        self.bus55_west = pygame.sprite.Group()
+        self.bus243_east = pygame.sprite.Group()
+        self.bus243_west = pygame.sprite.Group()
 
         # Tube Sprite Groups
-        self.picadilly_north = pygame.sprite.Group()
-        self.picadilly_south = pygame.sprite.Group()
+        self.piccadilly_north = pygame.sprite.Group()
+        self.piccadilly_south = pygame.sprite.Group()
         self.central_east = pygame.sprite.Group()
         self.central_west = pygame.sprite.Group()
 
-        # Create vehicles
-        for i in (self.bus17_north, self.bus17_south, self.bus46_north, self.bus46_south, self.bus19_north,
-                  self.bus19_south, self.bus38_north, self.bus38_south, self.bus55_north, self.bus55_south,
-                  self.bus243_north, self.bus243_south, self.picadilly_north, self.picadilly_south, self.central_east,
-                  self.central_west):
-            vf.create_vehicle(self.settings, i)
+        vf.create_vehicle(self.settings,self.bus17_north, self.bus17_south, self.bus46_north, self.bus46_south, self.bus19_east,
+              self.bus19_west, self.bus38_east, self.bus38_west, self.bus55_east, self.bus55_west,
+              self.bus243_east, self.bus243_west, self.piccadilly_north, self.piccadilly_south, self.central_east,
+              self.central_west)
 
 
     def _run_game(self):
@@ -47,9 +45,9 @@ class TflApp:
         while True:
             af.check_events()
             af.update_screen(self.settings, self.screen, self.bus17_north, self.bus17_south, self.bus46_north,
-                             self.bus46_south, self.bus19_north, self.bus19_south, self.bus38_north, self.bus38_south,
-                             self.bus55_north, self.bus55_south, self.bus243_north, self.bus243_south,
-                             self.picadilly_north, self.picadilly_south, self.central_east, self.central_west)
+                             self.bus46_south, self.bus19_east, self.bus19_west, self.bus38_east, self.bus38_west,
+                             self.bus55_east, self.bus55_west, self.bus243_east, self.bus243_west,
+                             self.piccadilly_north, self.piccadilly_south, self.central_east, self.central_west)
 
 
 if __name__ == '__main__':

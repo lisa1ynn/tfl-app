@@ -24,18 +24,20 @@ class Settings:
         self.tubestop_coventgarden_y = 850
 
         # Bus Station settings
+        # North/South bus route
+        self.busstop_x_n_x = 980
+        self.busstop_x_n_y = 50
         self.busstop_x_x = 980
         self.busstop_x_y = 200
-        self.busstop_other1_x = 980
-        self.busstop_other1_y = 50
-        self.busstop_other2_x = 980
-        self.busstop_other2_y = 600
+        self.busstop_x_s_x = 980
+        self.busstop_x_s_y = 600
+        # East/West bus route
+        self.busstop_y_w_x = 500
+        self.busstop_y_w_y = 360
         self.busstop_y_x = 800
         self.busstop_y_y = 360
-        self.busstop_other3_x = 500
-        self.busstop_other3_y = 360
-        self.busstop_other4_x = 1300
-        self.busstop_other4_y = 360
+        self.busstop_y_e_x = 1200
+        self.busstop_y_e_y = 360
 
         # Bus times
         #self.bus1_station1_time = 12.00
