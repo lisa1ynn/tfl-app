@@ -14,7 +14,7 @@ def continuously_create_vehicles(settings, bus_sprite_groups, tube_sprite_groups
                     print(f"if 1 - vehicle at station: {vehicle_id}")
                     if vehicle_id not in added_tubes:
                         tube_group = tube_sprite_groups[group_name]
-                        new_tube = Tube(rotation_angle=group_data['rotation_angle'])
+                        new_tube = Tube(rotation_angle=group_data['rotation_angle'], text=group_data['lineID'])
                         new_tube.rect.x = group_data['first_station_x']
                         new_tube.rect.y = group_data['first_station_y']
                         tube_group.add(new_tube)
@@ -31,7 +31,7 @@ def continuously_create_vehicles(settings, bus_sprite_groups, tube_sprite_groups
                     print(f"if 1 - vehicle close to station: {vehicle_id}")
                     if vehicle_id not in added_buses:
                         bus_group = bus_sprite_groups[group_name]
-                        new_bus = Bus(rotation_angle=group_data['rotation_angle'])
+                        new_bus = Bus(rotation_angle=group_data['rotation_angle'], text=group_data['lineID'])
                         new_bus.rect.x = group_data['first_station_x']
                         new_bus.rect.y = group_data['first_station_y']
                         bus_group.add(new_bus)

@@ -6,12 +6,14 @@ from classes.settings import Settings
 class Vehicle(Sprite):
     """A class to represent a single vehicle."""
 
-    def __init__(self, image, rotation_angle):
+    def __init__(self, image, rotation_angle, text):
         super().__init__()
         self.image = pygame.transform.rotate(pygame.transform.scale(pygame.image.load(image), (80, 80)), rotation_angle)
         self.rect = self.image.get_rect()
         self.settings = Settings()
         self.rotation_angle = rotation_angle
+        self.font = pygame.font.SysFont("Arial", 10)
+        self.text = text
 
         self.rect.x = 0
         self.rect.y = 0
@@ -34,14 +36,18 @@ class Vehicle(Sprite):
         self.rotation_angle = rotation_angle
         self.image = pygame.transform.rotate(pygame.transform.scale(pygame.image.load('images/tube1.bmp'), (80, 80)), rotation_angle)
 
-
-
+    def blitme_text(self, screen):
+        txtsurf = self.font.render(self.text, True, (0, 0, 0))
+        text_rect = txtsurf.get_rect()
+        text_rect.centerx = self.rect.x + self.rect.width // 2
+        text_rect.y = self.rect.y - text_rect.height
+        screen.blit(txtsurf, text_rect)
 
 # Subclasses for Bus and Train inheriting from Vehicle
 class Bus(Vehicle):
-    def __init__(self, rotation_angle):
-        super().__init__(image='images/bus1_100.bmp', rotation_angle=rotation_angle)
+    def __init__(self, rotation_angle, text):
+        super().__init__(image='images/bus1_100.bmp', rotation_angle=rotation_angle, text=text)
 
 class Tube(Vehicle):
-    def __init__(self, rotation_angle):
-        super().__init__(image='images/tube1.bmp', rotation_angle=rotation_angle)
+    def __init__(self, rotation_angle, text):
+        super().__init__(image='images/tube1.bmp', rotation_angle=rotation_angle, text=text)

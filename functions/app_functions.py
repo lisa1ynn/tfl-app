@@ -20,9 +20,13 @@ def update_screen(screen, settings, bus_sprite_groups, tube_sprite_groups):
     # Draw all sprites
     for group_name, group in bus_sprite_groups.items():
         group.draw(screen)
+        for bus in group.sprites():
+            bus.blitme_text(screen)
 
     for group_name, group in tube_sprite_groups.items():
         group.draw(screen)
+        for tube in group.sprites():
+            tube.blitme_text(screen)
 
     inf.create_infratructrure(screen)
     pygame.display.flip()
