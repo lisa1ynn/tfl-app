@@ -74,10 +74,12 @@ class Connection:
     def __init__(self, stationID, lineID):
         self.stationIDs = stationID
         self.lineIDs = lineID
+        self.APIkey = 'ff733b67fe7247e08f30d356c54f808f'
         self.url = f"https://api.tfl.gov.uk/Line/{self.lineIDs}/Arrivals/{self.stationIDs}?direction=all"
         self.hdr ={
         # Request headers
         'Cache-Control': 'no-cache',
+        'ApiKey': self.APIkey
         }
 
 
@@ -108,7 +110,7 @@ class Connection:
 
     
 
-conn = Connection()
+conn = Connection('490008165C','47')
 
 conn.call()
 
