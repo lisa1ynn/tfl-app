@@ -96,6 +96,7 @@ class Connection:
                 line_name = entry.get('lineName')
                 time_to_station = entry.get('timeToStation')
 
+
                 # Condition to check if timeToStation is less than 600, to not have too much unnecessary data
                 # if time_to_station < 600:
                 self.api_data_dict[vehicle_id] = {
@@ -104,6 +105,7 @@ class Connection:
                     "time_to_station": time_to_station,
                 }
         return self.api_data_dict
+
 
 conn = Connection('940GZZLUHBN','central')
 conn.call()
