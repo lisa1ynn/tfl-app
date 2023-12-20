@@ -43,7 +43,12 @@ def update_vehicles(settings, bus_sprite_groups, tube_sprite_groups):
         if group_name in bus_sprite_groups:
             direction_x = group_data['direction_x']
             direction_y = group_data['direction_y']
-            bus_sprite_groups[group_name].update(settings, direction_x, direction_y)
+            bus_sprite_groups[group_name].update(group_data['first_station_x'],
+                                                 group_data['first_station_y'],
+                                                 group_data['second_station_x'],
+                                                 group_data['second_station_y'],
+                                                 60,
+                                                 direction_x, direction_y)
 
     # Update vehicles based on tube_groups_dict
     for group_name, group_data in settings.tube_groups_dict.items():
@@ -60,7 +65,12 @@ def update_vehicles(settings, bus_sprite_groups, tube_sprite_groups):
                 else:
                     direction_x = group_data['direction_x']
                     direction_y = group_data['direction_y']
-                tube.update(settings, direction_x, direction_y)
+                tube.update(group_data['first_station_x'],
+                            group_data['first_station_y'],
+                            group_data['second_station_x'],
+                            group_data['second_station_y'],
+                            60,
+                            direction_x, direction_y)
 
 
     # Remove vehicle from sprite group when done.
