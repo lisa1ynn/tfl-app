@@ -2,8 +2,7 @@ import urllib.request, json
 
 
 class Connection:
-
-    # To call the API and receive data for a particular station and line, one needs to pass the arguments
+    '''# To call the API and receive data for a particular station and line, one needs to pass the arguments
     # of the station's ID and the line's ID into the init method of an object of the Connection class.
 
     # As we would like to display trains even after they depart the station, we also need ID's for other stations,
@@ -22,7 +21,7 @@ class Connection:
     # Covent Garden Underground Station ID (Northern Southbound Leaving Holborn) = '940GZZLUCGN'
     # Russell Square Underground Station ID (Northern Northbound Leaving Holborn) = '940GZZLURSQ'
 
-    
+
     # Bus Stops:
     # (If you're confused, blame it on TFL, they literally name two stops differently,
     # even if they are across the road and service the same line. Sorry.)
@@ -55,7 +54,7 @@ class Connection:
     # Piccadilly Line ID = 'piccadilly'
 
     # Bus lines:
-    
+
     # East-West = Gray's Inn Road
 
     # North = Gray's Inn Road
@@ -66,11 +65,7 @@ class Connection:
     # East-West street stop line 3 = '19'
     # East-West street stop line 4 = '38'
     # North-South street stop line 1  = '17'
-    # North-South street stop line 2 = '46'
-
-
-
-
+    # North-South street stop line 2 = "46"'''
 
 
     def __init__(self, stationID, lineID):
@@ -106,10 +101,5 @@ class Connection:
 
 
                 print(f"Vehicle ID: {vehicle_id}, Line: {line_name}, Direction: {direction}, Platform: {platform_name}, Current Location: {current_location}, Time to Station: {time_to_station} seconds, Towards: {towards}")
-                return time_to_station
+                #return time_to_station
 
-    
-
-conn = Connection()
-
-conn.call()
