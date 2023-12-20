@@ -1,64 +1,58 @@
 from classes.vehicle import Bus, Tube
+from classes.json_TFL import Connection
 
-def create_vehicle(settings, bus17_north, bus17_south, bus46_north, bus46_south, bus19_east, bus19_west, bus38_east,
-                    bus38_west, bus55_east, bus55_west, bus243_east, bus243_west, piccadilly_north, piccadilly_south,
-                    central_east, central_west):
+def create_vehicle(settings, bus_sprite_groups, tube_sprite_groups):
+    """ Create buses based on bus_groups_dict"""
+    # NEW DATA LOGIC
+    # for group_name, group_data in settings.bus_groups_dict.items():
+    #   if group_name in bus_sprite_groups:
+    #       conn = Connection(group_data['last_station_i'], group_data['lineID'])
+    #       conn.call()
+    #           for entry, data in api_data_dict:
+    #                if current_location == “At {first station}” and api_data_dict["vehicle_id"] not in bus_group:
+    #                   bus_group = bus_sprite_groups[group_name]
+    #                   api_data_dict["vehicle_id"] = Bus(rotation_angle=group_data['rotation_angle'])
+    #                   bus.rect.x = group_data['first_station_x']
+    #                   bus.rect.y = group_data['first_station_y']
+    #                   bus_group.add(api_data_dict["vehicle_id"])
 
-    bus_groups = [bus17_north, bus17_south, bus46_north, bus46_south, bus19_east, bus19_west, bus38_east,
-                    bus38_west, bus55_east, bus55_west, bus243_east, bus243_west]
+    for group_name, group_data in settings.bus_groups_dict.items():
+        if group_name in bus_sprite_groups:
+            bus_group = bus_sprite_groups[group_name]
+            bus = Bus(rotation_angle=group_data['rotation_angle'])
+            bus.rect.x = group_data['first_station_x']
+            bus.rect.y = group_data['first_station_y']
+            bus_group.add(bus)
 
-    tube_groups = [piccadilly_north, piccadilly_south, central_east, central_west]
+    """ Create tubes based on tube_groups_dict"""
+    for group_name, group_data in settings.tube_groups_dict.items():
+        if group_name in tube_sprite_groups:
+            tube_group = tube_sprite_groups[group_name]
+            tube = Tube(rotation_angle=group_data['rotation_angle'])
+            tube.rect.x = group_data['first_station_x']
+            tube.rect.y = group_data['first_station_y']
+            tube_group.add(tube)
 
-    """Create a bus and place it in the row."""
-    # !!! use a dictionary to store group with corresponding???
-    for bus_group in bus_groups:
-        bus = Bus()
-        bus.rect.x = settings.busstop_y_w_x
-        bus.rect.y = settings.busstop_y_w_y
-        bus_group.add(bus)
+def update_vehicles(screen, settings, bus_sprite_groups, tube_sprite_groups):
+    for group_name, group_data in settings.bus_groups_dict.items():
+        if group_name in bus_sprite_groups:
+            direction_x = group_data['direction_x']
+            direction_y = group_data['direction_y']
+            bus_sprite_groups[group_name].update(settings, direction_x, direction_y)
 
-    for tube_group in tube_groups:
-        tube = Tube()
-        tube.rect.x = settings.tubestop_coventgarden_x
-        tube.rect.y = settings.tubestop_coventgarden_y
-        tube_group.add(tube)
+        # Update vehicles based on tube_groups_dict
+    for group_name, group_data in settings.tube_groups_dict.items():
+        if group_name in tube_sprite_groups:
+            direction_x = group_data['direction_x']
+            direction_y = group_data['direction_y']
+            tube_sprite_groups[group_name].update(settings, direction_x, direction_y)
 
-def create_tube(settings, tubes):
-    """Create a bus and place it in the row."""
-    tube_northern_nort = Tube()
-    tube_northern_nort.rect.x = settings.tubestop_holborn_x
-    tube_northern_nort.rect.y = settings.tubestop_holborn_y
-    tubes.add(tube_northern_nort)
-
-
-def update_vehicles(screen, bus17_north, bus17_south, bus46_north, bus46_south, bus19_east, bus19_west, bus38_east,
-                    bus38_west, bus55_east, bus55_west, bus243_east, bus243_west, piccadilly_north, piccadilly_south,
-                    central_east, central_west):
-
-    groups = [bus17_north, bus17_south, bus46_north, bus46_south, bus19_east, bus19_west, bus38_east,
-              bus38_west, bus55_east, bus55_west, bus243_east, bus243_west, piccadilly_north,
-              piccadilly_south, central_east, central_west]
-
-    """Update the positions of all vehicles."""
-    bus17_north.update(1, 0)
-    bus17_south.update(1, 0)
-    bus46_north.update(1, 0)
-    bus46_south.update(1, 0)
-    bus19_east.update(1, 0)
-    bus19_west.update(1, 0)
-    bus38_east.update(1, 0)
-    bus38_west.update(1, 0)
-    bus55_east.update(1, 0)
-    bus55_west.update(1, 0)
-    bus243_east.update(1, 0)
-    bus243_west.update(1, 0)
-    piccadilly_north.update(1, 0)
-    piccadilly_south.update(1, 0)
-    central_east.update(1, 0)
-    central_west.update(1, 0)
+    all_groups = [bus_sprite_groups, tube_sprite_groups]
 
     # Get rid of vehicles that disappear from the screen.
-    for group in groups:
-        for vehicle in group.copy():
-            if not screen.get_rect().colliderect(vehicle.rect):
-                group.remove(vehicle)
+    # FIX!!!!
+    for groups in all_groups:
+        for group in groups.values():
+            for vehicle in group.copy():
+                if not screen.get_rect().colliderect(vehicle.rect):
+                    group.remove(vehicle)
