@@ -1,6 +1,7 @@
 import sys
 import pygame
 from functions import vehicle_functions as vf, infrastructure_functions as inf
+import time
 
 
 
@@ -30,5 +31,6 @@ def update_screen(screen, settings, bus_sprite_groups, tube_sprite_groups):
 
     inf.create_infratructrure(screen)
     pygame.display.flip()
+    time.sleep(0.2)
 
 

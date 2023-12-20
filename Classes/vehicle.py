@@ -1,7 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
 from classes.settings import Settings
-import math
 
 
 class Vehicle(Sprite):
@@ -23,42 +22,23 @@ class Vehicle(Sprite):
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
 
-    def get_distance(self, from_station_x, from_station_y, to_station_x, to_station_y):
-        if from_station_x > to_station_x and from_station_y > to_station_y:
-            distance = math.sqrt(abs((from_station_y - to_station_y)**2) + abs((from_station_x - to_station_x)**2))
-            return distance
-        elif from_station_x < to_station_x and from_station_y < to_station_y:
-            distance = math.sqrt(abs((to_station_y - from_station_y) ** 2) + abs((to_station_x - from_station_x) ** 2))
-        elif from_station_x > to_station_x:
-            distance = from_station_x - to_station_x
-        elif from_station_x < to_station_x:
-            distance = to_station_x - from_station_x
-        elif from_station_y > to_station_y:
-            distance = from_station_y - to_station_y
-        elif from_station_y < to_station_y:
-            distance = to_station_y - from_station_y
-        return distance
-
-    def calc_speed(self, from_station_x, from_station_y, to_station_x, to_station_y, time_to_station):
-        speed = self.get_distance(from_station_x, from_station_y, to_station_x, to_station_y) / time_to_station
-        return speed
-
-    def update(self, from_station_x, from_station_y, to_station_x, to_station_y, time_to_station,
-               direction_x=1, direction_y=0):
+    def update(self, direction_x=1, direction_y=0):
         """Move the vehicle."""
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
         # Move the vehicle based on updated directions
-        self.x += (self.calc_speed(from_station_x, from_station_y, to_station_x, to_station_y, time_to_station)
-                   * direction_x)
-        self.y += (self.calc_speed(from_station_x, from_station_y, to_station_x, to_station_y, time_to_station)
-                   * direction_x)
+        self.x += (self.settings.vehicle_speed * direction_x)
+        self.y += (self.settings.vehicle_speed * direction_y)
         self.rect.x = self.x
         self.rect.y = self.y
 
     def change_rotation_angle(self, rotation_angle):
         self.rotation_angle = rotation_angle
         self.image = pygame.transform.rotate(pygame.transform.scale(pygame.image.load('images/tube1.bmp'), (80, 80)), rotation_angle)
+
+    def change_position(self, position_x, position_y):
+        self.rect.x = position_x
+        self.rect.y = position_y
 
     def blitme_text(self, screen):
         txtsurf = self.font.render(self.text, True, (0, 0, 0))

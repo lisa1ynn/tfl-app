@@ -25,7 +25,6 @@ class TflApp:
         self.added_tubes = set()
         self.added_buses = set()
 
-
         for group_name, group_data in self.bus_dict_items:
             self.bus_sprite_groups[group_name] = pygame.sprite.Group()
 
