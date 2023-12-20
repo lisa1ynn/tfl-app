@@ -71,12 +71,15 @@ class Connection:
     def __init__(self, stationID, lineID):
         self.stationIDs = stationID
         self.lineIDs = lineID
+        self.APIkey = 'ff733b67fe7247e08f30d356c54f808f'
         self.url = f"https://api.tfl.gov.uk/Line/{self.lineIDs}/Arrivals/{self.stationIDs}?direction=all"
         self.hdr ={
         # Request headers
         'Cache-Control': 'no-cache',
+        'ApiKey': self.APIkey
         }
         self.api_data_dict = {}  # Initialize an empty dictionary to store data
+        
 
     def call(self):
         req = urllib.request.Request(self.url, headers=self.hdr)
@@ -94,10 +97,13 @@ class Connection:
                 time_to_station = entry.get('timeToStation')
 
                 # Condition to check if timeToStation is less than 600, to not have too much unnecessary data
-                if time_to_station < 600:
-                    self.api_data_dict[vehicle_id] = {
-                        "line": line_name,
-                        "current_location": current_location,
-                        "time_to_station": time_to_station,
-                    }
+                # if time_to_station < 600:
+                self.api_data_dict[vehicle_id] = {
+                    "line": line_name,
+                    "current_location": current_location,
+                    "time_to_station": time_to_station,
+                }
         return self.api_data_dict
+
+conn = Connection('940GZZLUHBN','central')
+conn.call()
