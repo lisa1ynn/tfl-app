@@ -24,7 +24,7 @@ def update_screen(screen, settings, bus_sprite_groups, tube_sprite_groups):
     for group_name, group in tube_sprite_groups.items():
         group.draw(screen)
 
-    inf.create_infratructrure(screen, settings)
+    inf.create_infratructrure(screen)
     pygame.display.flip()
 
 

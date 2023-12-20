@@ -91,19 +91,13 @@ class Connection:
                 vehicle_id = entry.get('vehicleId')
                 current_location = entry.get('currentLocation')
                 line_name = entry.get('lineName')
-                # direction = entry.get('direction')
-                # platform_name = entry.get('platformName')
                 time_to_station = entry.get('timeToStation')
-                # towards = entry.get('towards')
 
                 # Condition to check if timeToStation is less than 600, to not have too much unnecessary data
                 if time_to_station < 600:
                     self.api_data_dict[vehicle_id] = {
                         "line": line_name,
-                        # "direction": direction,
-                        # "platform": platform_name,
                         "current_location": current_location,
                         "time_to_station": time_to_station,
-                        # "towards": towards
                     }
         return self.api_data_dict

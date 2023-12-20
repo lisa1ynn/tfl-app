@@ -55,13 +55,3 @@ if __name__ == '__main__':
     vehicle_thread.start()
 
     ta._run_game()
-
-
-    # Start the game loop in a thread
-    # game_thread = threading.Thread(target=ta._run_game)
-    # game_thread.start()
-
-    # Start the continuous vehicle update in another thread
-    # update_thread = threading.Thread(target=vf.continuously_update_vehicles,
-                                     # args=(ta.settings, ta.bus_sprite_groups, ta.tube_sprite_groups))
-    # update_thread.start()

@@ -3,7 +3,7 @@ from classes.roads import Roads
 from classes.stops import TubeStops, BusStops
 from classes.hult import Hult
 
-def create_infratructrure(screen, settings):
+def create_infratructrure(screen):
     """Create infrastructure"""
     # Roads
     roads = Roads(screen)
