@@ -1,6 +1,8 @@
 import pygame
 from classes.settings import Settings
 from functions import app_functions as af, vehicle_functions as vf
+import threading
+import time
 
 
 class TflApp:
@@ -15,9 +17,13 @@ class TflApp:
         self.bus_dict_items = self.settings.bus_groups_dict.items()
         self.tube_dict_items = self.settings.tube_groups_dict.items()
 
-        # Bus Sprite Groups
+        # Bus and Tube Sprite Groups
         self.bus_sprite_groups = {}
         self.tube_sprite_groups = {}
+
+        # Dictionary to keep track of added vehicles that are already on the screen
+        self.added_tubes = set()
+        self.added_buses = set()
 
         for group_name, group_data in self.bus_dict_items:
             self.bus_sprite_groups[group_name] = pygame.sprite.Group()
@@ -25,17 +31,37 @@ class TflApp:
         for group_name, group_data in self.tube_dict_items:
             self.tube_sprite_groups[group_name] = pygame.sprite.Group()
 
-        vf.create_vehicle(self.settings, self.bus_sprite_groups, self.tube_sprite_groups)
-
-
     def _run_game(self):
         """Start the main loop for the app."""
         while True:
             af.check_events()
             af.update_screen(self.screen, self.settings, self.bus_sprite_groups, self.tube_sprite_groups)
 
+    def run_vehicle_creation(self):
+        while True:
+            vf.continuously_create_vehicles(
+                self.settings, self.bus_sprite_groups, self.tube_sprite_groups, self.added_tubes, self.added_buses
+            )
+            time.sleep(5)  # Adjust this sleep duration as needed
+
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
     ta = TflApp()
+
+    # Start a new thread for continuously creating vehicles
+    vehicle_thread = threading.Thread(target=ta.run_vehicle_creation)
+    vehicle_thread.daemon = True  # Daemonize the thread to stop it when the main thread ends
+    vehicle_thread.start()
+
     ta._run_game()
+
+
+    # Start the game loop in a thread
+    # game_thread = threading.Thread(target=ta._run_game)
+    # game_thread.start()
+
+    # Start the continuous vehicle update in another thread
+    # update_thread = threading.Thread(target=vf.continuously_update_vehicles,
+                                     # args=(ta.settings, ta.bus_sprite_groups, ta.tube_sprite_groups))
+    # update_thread.start()
