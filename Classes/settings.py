@@ -30,13 +30,13 @@ class Settings:
         self.busstop_x_x = 980
         self.busstop_x_y = 200
         self.busstop_x_s_x = 980
-        self.busstop_x_s_y = 600
+        self.busstop_x_s_y = 850
         # East/West bus route
         self.busstop_y_w_x = 500
         self.busstop_y_w_y = 360
         self.busstop_y_x = 800
         self.busstop_y_y = 360
-        self.busstop_y_e_x = 1200
+        self.busstop_y_e_x = 1300
         self.busstop_y_e_y = 360
 
         self.bus_groups_dict = {

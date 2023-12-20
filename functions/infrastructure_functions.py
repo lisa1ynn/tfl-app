@@ -25,10 +25,10 @@ def create_infratructrure(screen):
         'busstops': [
             {"name": "Coley Street (HD & HC)", "x": 980, "y": 50},
             {"name": "Gray's Inn Road (B) & Clerkenwell Road (CD)", "x": 980, "y": 200},
-            {"name": "Holborn Circus (H) & High Holborn (C)", "x": 980, "y": 600},
+            {"name": "Holborn Circus (H) & High Holborn (C)", "x": 980, "y": 850},
             {"name": "Red Lion Street (G & A)", "x": 500, "y": 360},
             {"name": "Gray's Inn Road (CA & CP)", "x": 800, "y": 360},
-            {"name": "Rosebery Avenue (CE, CU, CW) & Clerkenwell Road (CN)", "x": 1200, "y": 360}
+            {"name": "Rosebery Avenue (CE, CU, CW) & Clerkenwell Road (CN)", "x": 1300, "y": 360}
         ]
     }
 

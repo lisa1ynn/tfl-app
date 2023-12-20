@@ -15,7 +15,7 @@ def update_screen(screen, settings, bus_sprite_groups, tube_sprite_groups):
     screen.fill(settings.bg_color)
 
     # Update vehicles
-    vf.update_vehicles(screen, settings, bus_sprite_groups, tube_sprite_groups)
+    vf.update_vehicles(settings, bus_sprite_groups, tube_sprite_groups)
 
     # Draw all sprites
     for group_name, group in bus_sprite_groups.items():

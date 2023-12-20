@@ -42,7 +42,7 @@ class TflApp:
             vf.continuously_create_vehicles(
                 self.settings, self.bus_sprite_groups, self.tube_sprite_groups, self.added_tubes, self.added_buses
             )
-            time.sleep(5)  # Adjust this sleep duration as needed
+            time.sleep(10)
 
 
 if __name__ == '__main__':
