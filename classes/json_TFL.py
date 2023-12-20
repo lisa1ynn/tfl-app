@@ -84,6 +84,7 @@ class Connection:
         
 
     def call(self):
+        print(self.url)
         req = urllib.request.Request(self.url, headers=self.hdr)
         req.get_method = lambda: 'GET'
 
@@ -98,11 +99,14 @@ class Connection:
                 current_location = entry.get('currentLocation')
                 line_name = entry.get('lineName')
                 time_to_station = entry.get('timeToStation')
+                towards_station = entry.get('towards')
 
                 self.api_data_dict[vehicle_id] = {
                     "line": line_name,
                     "direction": direction,
                     "current_location": current_location,
                     "time_to_station": time_to_station,
+                    "towards_station": towards_station,
                 }
         return self.api_data_dict
+

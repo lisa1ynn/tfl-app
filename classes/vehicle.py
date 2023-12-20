@@ -2,7 +2,6 @@ import pygame
 from pygame.sprite import Sprite
 from classes.settings import Settings
 
-
 class Vehicle(Sprite):
     """A class to represent a single vehicle."""
 
