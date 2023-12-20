@@ -76,30 +76,28 @@ class Connection:
         # Request headers
         'Cache-Control': 'no-cache',
         }
-
+        self.api_data_dict = {}  # Initialize an empty dictionary to store data
 
     def call(self):
-
         req = urllib.request.Request(self.url, headers=self.hdr)
-
         req.get_method = lambda: 'GET'
-        with urllib.request.urlopen(req) as response:
-                
-            response_content = response.read()  # Read the response content
-            response_string = response_content.decode('utf-8')  # Decode the content
 
+        with urllib.request.urlopen(req) as response:
+            response_content = response.read()
+            response_string = response_content.decode('utf-8')
             data = json.loads(response_string)
 
             for entry in data:
                 vehicle_id = entry.get('vehicleId')
                 current_location = entry.get('currentLocation')
                 line_name = entry.get('lineName')
-                direction = entry.get('direction')
-                platform_name = entry.get('platformName')
                 time_to_station = entry.get('timeToStation')
-                towards = entry.get('towards')
 
-
-                print(f"Vehicle ID: {vehicle_id}, Line: {line_name}, Direction: {direction}, Platform: {platform_name}, Current Location: {current_location}, Time to Station: {time_to_station} seconds, Towards: {towards}")
-                #return time_to_station
-
+                # Condition to check if timeToStation is less than 600, to not have too much unnecessary data
+                if time_to_station < 600:
+                    self.api_data_dict[vehicle_id] = {
+                        "line": line_name,
+                        "current_location": current_location,
+                        "time_to_station": time_to_station,
+                    }
+        return self.api_data_dict

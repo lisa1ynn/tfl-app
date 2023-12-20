@@ -43,7 +43,7 @@ class Settings:
             'bus17_north': {
                 'lineID': "17",
                 'first_station_id': "490008165C",
-                'last_station_id': "490007598S",
+                'third_station_id': "490007598S",
                 'first_station_x': self.busstop_x_s_x - 40,
                 'first_station_y': self.busstop_x_s_y,
                 'second_station_x': self.busstop_x_x - 40,
@@ -58,7 +58,7 @@ class Settings:
             'bus17_south': {
                 'lineID': "17",
                 'first_station_id': "490007598S",
-                'last_station_id': "490008165C",
+                'third_station_id': "490008165C",
                 'first_station_x': self.busstop_x_n_x,
                 'first_station_y': self.busstop_x_n_y,
                 'second_station_x': self.busstop_x_x,
@@ -72,7 +72,7 @@ class Settings:
             'bus46_north': {
                 'lineID': "46",
                 'first_station_id': "490008165C",
-                'last_station_id': "490007598S",
+                'third_station_id': "490007598S",
                 'first_station_x': self.busstop_x_s_x - 40,
                 'first_station_y': self.busstop_x_s_y,
                 'second_station_x': self.busstop_x_x - 40,
@@ -86,7 +86,7 @@ class Settings:
             'bus46_south': {
                 'lineID': "46",
                 'first_station_id': "490007598S",
-                'last_station_id': "490008165C",
+                'third_station_id': "490008165C",
                 'first_station_x': self.busstop_x_n_x,
                 'first_station_y': self.busstop_x_n_y,
                 'second_station_x': self.busstop_x_x,
@@ -100,7 +100,7 @@ class Settings:
             'bus19_east': {
                 'lineID': "19",
                 'first_station_id': "490007834F",
-                'last_station_id': "490011679W",
+                'third_station_id': "490011679W",
                 'first_station_x': self.busstop_y_w_x,
                 'first_station_y': self.busstop_y_w_y - 20,
                 'second_station_x': self.busstop_y_x,
@@ -114,7 +114,7 @@ class Settings:
             'bus19_west': {
                 'lineID': "19",
                 'first_station_id': "490011679W",
-                'last_station_id': "490007834F",
+                'third_station_id': "490007834F",
                 'first_station_x': self.busstop_y_e_x,
                 'first_station_y': self.busstop_y_e_y + 20,
                 'second_station_x': self.busstop_y_x,
@@ -129,7 +129,7 @@ class Settings:
             'bus38_east': {
                 'lineID': "38",
                 'first_station_id': "490007834F",
-                'last_station_id': "490011679W",
+                'third_station_id': "490011679W",
                 'first_station_x': self.busstop_y_w_x,
                 'first_station_y': self.busstop_y_w_y - 20,
                 'second_station_x': self.busstop_y_x,
@@ -143,7 +143,7 @@ class Settings:
             'bus38_west': {
                 'lineID': "38",
                 'first_station_id': "490011679W",
-                'last_station_id': "490007834F",
+                'third_station_id': "490007834F",
                 'first_station_x': self.busstop_y_e_x,
                 'first_station_y': self.busstop_y_e_y + 20,
                 'second_station_x': self.busstop_y_x,
@@ -157,7 +157,7 @@ class Settings:
             'bus55_east': {
                 'lineID': "55",
                 'first_station_id': "490007834F",
-                'last_station_id': "490011679W",
+                'third_station_id': "490011679W",
                 'first_station_x': self.busstop_y_w_x,
                 'first_station_y': self.busstop_y_w_y - 20,
                 'second_station_x': self.busstop_y_x,
@@ -171,7 +171,7 @@ class Settings:
             'bus55_west': {
                 'lineID': "55",
                 'first_station_id': "490011679W",
-                'last_station_id': "490007834F",
+                'third_station_id': "490007834F",
                 'first_station_x': self.busstop_y_e_x,
                 'first_station_y': self.busstop_y_e_y + 20,
                 'second_station_x': self.busstop_y_x,
@@ -185,7 +185,7 @@ class Settings:
             'bus243_east': {
                 'lineID': "243",
                 'first_station_id': "490007834F",
-                'last_station_id': "490011679W",
+                'third_station_id': "490011679W",
                 'first_station_x': self.busstop_y_w_x,
                 'first_station_y': self.busstop_y_w_y - 20,
                 'second_station_x': self.busstop_y_x,
@@ -199,7 +199,7 @@ class Settings:
             'bus243_west': {
                 'lineID': "243",
                 'first_station_id': "490011679W",
-                'last_station_id': "490007834F",
+                'third_station_id': "490007834F",
                 'first_station_x': self.busstop_y_e_x,
                 'first_station_y': self.busstop_y_e_y + 20,
                 'second_station_x': self.busstop_y_x,
@@ -216,7 +216,10 @@ class Settings:
             'piccadilly_north': {
                 'lineID': "piccadilly",
                 'first_station_id': "940GZZLUCGN",
-                'last_station_id': "940GZZLURSQ",
+                'third_station_id': "940GZZLURSQ",
+                'first_station_name': "Covent Garden",
+                'second_station_name': "Holborn",
+                'third_station_name': "Russel Square",
                 'first_station_x': self.tubestop_coventgarden_x,
                 'first_station_y': self.tubestop_coventgarden_y,
                 'second_station_x': self.tubestop_holborn_x,
@@ -230,7 +233,10 @@ class Settings:
             'piccadilly_south': {
                 'lineID': "piccadilly",
                 'first_station_id': "940GZZLURSQ",
-                'last_station_id': "940GZZLUCGN",
+                'third_station_id': "940GZZLUCGN",
+                'first_station_name': "Covent Garden",
+                'second_station_name': "Holborn",
+                'third_station_name': "Russel Square",
                 'first_station_x': self.tubestop_russlesquare_x + 40,
                 'first_station_y': self.tubestop_russlesquare_y,
                 'second_station_x': self.tubestop_holborn_x + 40,
@@ -244,7 +250,10 @@ class Settings:
             'central_east': {
                 'lineID': "central",
                 'first_station_id': "940GZZLUTCR",
-                'last_station_id': "940GZZLUCHL",
+                'third_station_id': "940GZZLUCHL",
+                'first_station_name': "Tottenham Court Road",
+                'second_station_name': "Holborn",
+                'third_station_name': "Chancery Lane",
                 'first_station_x': self.tubestop_tottenhamcourtroad_x,
                 'first_station_y': self.tubestop_tottenhamcourtroad_y,
                 'second_station_x': self.tubestop_holborn_x,
@@ -258,7 +267,10 @@ class Settings:
             'central_west': {
                 'lineID': "central",
                 'first_station_id': "940GZZLUCHL",
-                'last_station_id': "940GZZLUTCR",
+                'third_station_id': "940GZZLUTCR",
+                'first_station_name': "Chancery Lane",
+                'second_station_name': "Holborn",
+                'third_station_name': "Tottenham Court Road",
                 'first_station_x': self.tubestop_chancerylane_x,
                 'first_station_y': self.tubestop_chancerylane_y + 50,
                 'second_station_x': self.tubestop_holborn_x,
