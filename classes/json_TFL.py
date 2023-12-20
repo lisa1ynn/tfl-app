@@ -65,23 +65,26 @@ class Connection:
     # East-West street stop line 3 = '19'
     # East-West street stop line 4 = '38'
     # North-South street stop line 1  = '17'
-    # North-South street stop line 2 = "46"'''
+    # North-South street stop line 2 = "46"
+    '''
 
 
-    def __init__(self, stationID, lineID):
+    def __init__(self, stationID, lineID, direction):
         self.stationIDs = stationID
         self.lineIDs = lineID
-        self.APIkey = 'ff733b67fe7247e08f30d356c54f808f'
-        self.url = f"https://api.tfl.gov.uk/Line/{self.lineIDs}/Arrivals/{self.stationIDs}?direction=all"
+        self.direction = direction
+        self.api_key = 'ff733b67fe7247e08f30d356c54f808f'
+        self.url = f"https://api.tfl.gov.uk/Line/{self.lineIDs}/Arrivals/{self.stationIDs}?direction={self.direction}&app_key={self.api_key}"
         self.hdr ={
         # Request headers
         'Cache-Control': 'no-cache',
-        'ApiKey': self.APIkey
         }
         self.api_data_dict = {}  # Initialize an empty dictionary to store data
+
         
 
     def call(self):
+        print(self.url)
         req = urllib.request.Request(self.url, headers=self.hdr)
         req.get_method = lambda: 'GET'
 
@@ -92,20 +95,18 @@ class Connection:
 
             for entry in data:
                 vehicle_id = entry.get('vehicleId')
+                direction = entry.get('direction')
                 current_location = entry.get('currentLocation')
                 line_name = entry.get('lineName')
                 time_to_station = entry.get('timeToStation')
+                towards_station = entry.get('towards')
 
-
-                # Condition to check if timeToStation is less than 600, to not have too much unnecessary data
-                # if time_to_station < 600:
                 self.api_data_dict[vehicle_id] = {
                     "line": line_name,
+                    "direction": direction,
                     "current_location": current_location,
                     "time_to_station": time_to_station,
+                    "towards_station": towards_station,
                 }
         return self.api_data_dict
 
-
-conn = Connection('940GZZLUHBN','central')
-conn.call()

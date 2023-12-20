@@ -2,7 +2,6 @@ import pygame
 from pygame.sprite import Sprite
 from classes.settings import Settings
 
-
 class Vehicle(Sprite):
     """A class to represent a single vehicle."""
 
@@ -11,6 +10,7 @@ class Vehicle(Sprite):
         self.image = pygame.transform.rotate(pygame.transform.scale(pygame.image.load(image), (80, 80)), rotation_angle)
         self.rect = self.image.get_rect()
         self.settings = Settings()
+        self.rotation_angle = rotation_angle
 
         self.rect.x = 0
         self.rect.y = 0
@@ -23,20 +23,16 @@ class Vehicle(Sprite):
         """Move the vehicle."""
         self.x = float(self.rect.x)
         self.y = float(self.rect.y)
-
-        '''for group_name, group_data in settings.tube_groups_dict.items():
-            if group_name == "central_east" and self.x <= group_data['second_station_x']:
-                group_data['direction_x'] = 1
-                group_data['direction_y'] = 1
-            elif group_name == "central_west" and self.x >= group_data['second_station_x']:
-                group_data['direction_x'] = 1
-                group_data['direction_y'] = 0'''
-
         # Move the vehicle based on updated directions
         self.x += (self.settings.vehicle_speed * direction_x)
         self.y += (self.settings.vehicle_speed * direction_y)
         self.rect.x = self.x
         self.rect.y = self.y
+
+    def change_rotation_angle(self, rotation_angle):
+        self.rotation_angle = rotation_angle
+        self.image = pygame.transform.rotate(pygame.transform.scale(pygame.image.load('images/tube1.bmp'), (80, 80)), rotation_angle)
+
 
 
 
@@ -48,5 +44,3 @@ class Bus(Vehicle):
 class Tube(Vehicle):
     def __init__(self, rotation_angle):
         super().__init__(image='images/tube1.bmp', rotation_angle=rotation_angle)
-
-
