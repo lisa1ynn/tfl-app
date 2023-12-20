@@ -20,10 +20,10 @@ class Stops:
 
 class TubeStops(Stops):
     def __init__(self, screen, x, y, text):
-        super().__init__(screen, image="images/tube1.bmp", x=x, y=y, text=text)
+        super().__init__(screen, image="images/tube-station4.bmp", x=x, y=y, text=text)
         # Tube-Stop-specific attributes or behaviors can be added here
 
 class BusStops(Stops):
     def __init__(self, screen, x, y, text):
-        super().__init__(screen, image="images/tube1.bmp", x=x, y=y, text=text)
+        super().__init__(screen, image="images/bus-stop.bmp", x=x, y=y, text=text)
         # Bus-stop-specific attributes or behaviors can be added here

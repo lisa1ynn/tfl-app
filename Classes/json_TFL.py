@@ -2,8 +2,7 @@ import urllib.request, json
 
 
 class Connection:
-
-    # To call the API and receive data for a particular station and line, one needs to pass the arguments
+    '''# To call the API and receive data for a particular station and line, one needs to pass the arguments
     # of the station's ID and the line's ID into the init method of an object of the Connection class.
 
     # As we would like to display trains even after they depart the station, we also need ID's for other stations,
@@ -16,11 +15,13 @@ class Connection:
 
     # Holborn Underground Station ID = '940GZZLUHBN'
     # Chancery Lane Underground Station ID (Central Eastbound Leaving Holborn) = '940GZZLUCHL'
-    # Tottenham Court Road Underground Station ID (Central Westbound Leaving Holborn) = 'HUBTCR'
+    # Tottenham Court Road Underground Station ID (Central Westbound Leaving Holborn) = '940GZZLUTCR'
+    # Oxford Circus Underground Station ID (Central Westbound) = '940GZZLUOXC'
+
     # Covent Garden Underground Station ID (Northern Southbound Leaving Holborn) = '940GZZLUCGN'
     # Russell Square Underground Station ID (Northern Northbound Leaving Holborn) = '940GZZLURSQ'
 
-    
+
     # Bus Stops:
     # (If you're confused, blame it on TFL, they literally name two stops differently,
     # even if they are across the road and service the same line. Sorry.)
@@ -53,7 +54,7 @@ class Connection:
     # Piccadilly Line ID = 'piccadilly'
 
     # Bus lines:
-    
+
     # East-West = Gray's Inn Road
 
     # North = Gray's Inn Road
@@ -64,11 +65,7 @@ class Connection:
     # East-West street stop line 3 = '19'
     # East-West street stop line 4 = '38'
     # North-South street stop line 1  = '17'
-    # North-South street stop line 2 = '46'
-
-
-
-
+    # North-South street stop line 2 = "46"'''
 
 
     def __init__(self, stationID, lineID):
@@ -81,27 +78,23 @@ class Connection:
         'Cache-Control': 'no-cache',
         'ApiKey': self.APIkey
         }
-
+        self.api_data_dict = {}  # Initialize an empty dictionary to store data
 
     def call(self):
-
         req = urllib.request.Request(self.url, headers=self.hdr)
-
         req.get_method = lambda: 'GET'
-        with urllib.request.urlopen(req) as response:
-                
-            response_content = response.read()  # Read the response content
-            response_string = response_content.decode('utf-8')  # Decode the content
 
+        with urllib.request.urlopen(req) as response:
+            response_content = response.read()
+            response_string = response_content.decode('utf-8')
             data = json.loads(response_string)
 
             for entry in data:
                 vehicle_id = entry.get('vehicleId')
                 current_location = entry.get('currentLocation')
                 line_name = entry.get('lineName')
-                direction = entry.get('direction')
-                platform_name = entry.get('platformName')
                 time_to_station = entry.get('timeToStation')
+<<<<<<< HEAD
                 towards = entry.get('towards')
 
 
@@ -116,4 +109,14 @@ conn.call()
 
 
 
+=======
+>>>>>>> main
 
+                # Condition to check if timeToStation is less than 600, to not have too much unnecessary data
+                if time_to_station < 600:
+                    self.api_data_dict[vehicle_id] = {
+                        "line": line_name,
+                        "current_location": current_location,
+                        "time_to_station": time_to_station,
+                    }
+        return self.api_data_dict
