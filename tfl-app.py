@@ -46,7 +46,7 @@ class TflApp:
 
 
 if __name__ == '__main__':
-    # Make a game instance, and run the game.
+    # Make a game instance
     ta = TflApp()
 
     # Start a new thread for continuously creating vehicles
@@ -54,4 +54,5 @@ if __name__ == '__main__':
     vehicle_thread.daemon = True  # Daemonize the thread to stop it when the main thread ends
     vehicle_thread.start()
 
+    # Run the game
     ta._run_game()

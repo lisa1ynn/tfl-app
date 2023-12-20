@@ -3,7 +3,6 @@ from classes.json_TFL import Connection
 
 def continuously_create_vehicles(settings, bus_sprite_groups, tube_sprite_groups, added_tubes, added_buses):
     """Continuously update vehicles based on live data."""
-    print('added_tubes: ', added_tubes)
     # Logic to fetch live data and create vehicles
     for group_name, group_data in settings.tube_groups_dict.items():
         if group_name in tube_sprite_groups:
@@ -19,7 +18,6 @@ def continuously_create_vehicles(settings, bus_sprite_groups, tube_sprite_groups
                         tube_group.add(new_tube)
                         added_tubes.add(vehicle_id)
 
-    print('added_buses: ', added_buses)
     # Logic to fetch live data and create vehicles
     for group_name, group_data in settings.bus_groups_dict.items():
         if group_name in bus_sprite_groups:
