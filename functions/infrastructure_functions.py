@@ -1,7 +1,7 @@
-
 from classes.roads import Roads
 from classes.stops import TubeStops, BusStops
 from classes.hult import Hult
+from classes.display_table import Display
 
 def create_infratructrure(screen):
     """Create infrastructure"""
@@ -12,6 +12,7 @@ def create_infratructrure(screen):
     # Hult
     hult = Hult(screen)
     hult.blitme()
+
 
     # Tube and bus stops data in a dictionary
     stops_data = {
@@ -39,6 +40,31 @@ def create_infratructrure(screen):
     # Blit bus stops
     for stop in stops_data['busstops']:
         BusStops(screen, x=stop['x'], y=stop['y'], text=stop['name']).blitme()
+
+    #visual for display table
+    def display_table(self,station, line_ids,time_for_arrival,direction):
+        display_instance = Display(station,line_ids,time_for_arrival,direction)
+        display_instance.get_timetable(station)
+        self.rect = self.display_table.get_rect()
+
+
+
+        self.rect = self.image.get_rect()
+
+        self.rect.x = 700
+        self.rect.y = 200
+
+
+
+
+"""Running example of display table if __name__ == "__main__":
+
+    # Display timetable for Holborn station, Central and Piccadilly lines
+    display_table("Holborn", ["central", "piccadilly"], 600, "all")
+
+    pygame.display.flip()
+    pygame.display.update()
+    pygame.time.Clock().tick(30)"""
 
 
 

@@ -9,7 +9,7 @@ class Settings:
         self.bg_color = (230, 230, 230)
 
         # Vehicle settings
-        self.vehicle_speed = 2
+        self.vehicle_speed = 4
 
         # Tube Station settings
         self.tubestop_chancerylane_x = 690
@@ -38,6 +38,12 @@ class Settings:
         self.busstop_y_y = 360
         self.busstop_y_e_x = 1300
         self.busstop_y_e_y = 360
+
+
+
+        #self.display_y_x
+        self.display1_y = 400
+        self.display2_x = 250
 
         self.bus_groups_dict = {
             'bus17_north': {
@@ -298,6 +304,5 @@ class Settings:
                 'rotation_angle': 135
             }
         }
-
 
 

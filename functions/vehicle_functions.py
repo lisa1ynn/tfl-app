@@ -24,7 +24,7 @@ def continuously_create_vehicles(settings, bus_sprite_groups, tube_sprite_groups
             conn = Connection(group_data['first_station_id'], group_data['lineID'], group_data['direction'])
             api_dict = conn.call()
             for vehicle_id, api_data in api_dict.items():
-                if api_data["time_to_station"] <= 30:
+                if api_data["time_to_station"] <= 120:
                     if vehicle_id not in added_buses:
                         bus_group = bus_sprite_groups[group_name]
                         new_bus = Bus(rotation_angle=group_data['rotation_angle'], text=group_data['lineID'])
