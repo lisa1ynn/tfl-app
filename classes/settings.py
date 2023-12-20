@@ -39,7 +39,11 @@ class Settings:
         self.busstop_y_e_x = 1300
         self.busstop_y_e_y = 360
 
+
+
         #self.display_y_x
+        self.display1_y = 400
+        self.display2_x = 250
 
         self.bus_groups_dict = {
             'bus17_north': {
@@ -300,6 +304,5 @@ class Settings:
                 'rotation_angle': 135
             }
         }
-
 
 
