@@ -30,8 +30,6 @@ class TflApp:
         self.added_tubes = set()
         self.added_buses = set()
 
-
-
         for group_name, group_data in self.bus_dict_items:
             self.bus_sprite_groups[group_name] = pygame.sprite.Group()
 
@@ -41,9 +39,6 @@ class TflApp:
         self.display_instance_Holborn = Display("940GZZLUHBN", "central,piccadilly", 600, "all")
         self.display_instance_BUS_EW = Display("490007391E", "55,243,19,38", 1500, "all")
         self.display_instance_BUS_NS = Display("490008165B", "17,46", 1500, "all")
-
-
-
 
     def run_game(self):
         """Start the main loop for the app."""
@@ -56,7 +51,7 @@ class TflApp:
             vf.continuously_create_vehicles(
                 self.settings, self.bus_sprite_groups, self.tube_sprite_groups, self.added_tubes, self.added_buses
             )
-            time.sleep(5)
+            time.sleep(2.5)
 
 if __name__ == '__main__':
     # Make a game instance

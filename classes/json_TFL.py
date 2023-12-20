@@ -84,7 +84,6 @@ class Connection:
         
 
     def call(self):
-        print(self.url)
         req = urllib.request.Request(self.url, headers=self.hdr)
         req.get_method = lambda: 'GET'
 

@@ -30,18 +30,11 @@ class Display:
 
         print(header_str)
 
-        # print(tabulate(table_data, headers=headers, tablefmt="plain"))
-
-    #def set_position(self,x,y):
-        #self.x=x
-        #self.y=y
-
     def get_timetable(self, station,font):
         data = self.connection.call()
         while data:
             table_data = self.process_data(data)
-            print("count")
-            time.sleep(3)
+            #time.sleep(3)
             return self.render_timetable(table_data, station, font)
 
         else:
@@ -74,17 +67,6 @@ class Display:
             y_offset += surface.get_height()
 
         return timetable_surface
-        # # Use Pygame's font module to render text
-        # text_surface = font.render(timetable_text, True, (255, 165, 0))  # Orange color
-        #
-        # # Create a surface with a black background
-        # background_surface = pygame.Surface(text_surface.get_size())
-        # background_surface.fill((0, 0, 0))  # Black color
-        #
-        # # Blit the text surface onto the background surface
-        # background_surface.blit(text_surface, (0, 0))
-        #
-        # return background_surface
 
     def get_timetable_surface_size(self, station, font):
         data = self.connection.call()
@@ -117,21 +99,3 @@ class Display:
         table_data.sort(key=lambda x: x[1])
 
         return table_data
-
-if __name__ == "__main__":
-    station_id = "940GZZLUHBN"
-    line_ids = "central,piccadilly"
-    time_for_arrival = 600 # Adjust as needed
-    direction = "all"  # Replace with the actual direction
-
-    display_instance = Display(station_id, line_ids, time_for_arrival, direction)
-    display_instance.get_timetable("Holborn stations")
-
-#Gray Inn's Road
-    station_id = "490008165B"
-    line_ids = "17,46"
-    time_for_arrival = 6000 # Adjust as needed
-    direction = "all"
-
-    display_instance = Display(station_id, line_ids, time_for_arrival, direction)
-    display_instance.get_timetable("Gray Inn's Road, North to South")

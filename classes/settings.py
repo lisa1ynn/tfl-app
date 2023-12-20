@@ -9,7 +9,7 @@ class Settings:
         self.bg_color = (230, 230, 230)
 
         # Vehicle settings
-        self.vehicle_speed = 0.8
+        self.vehicle_speed = 4
 
         # Tube Station settings
         self.tubestop_chancerylane_x = 690
